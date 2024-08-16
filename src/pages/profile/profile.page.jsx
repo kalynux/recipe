@@ -3,10 +3,13 @@ import nn from './profile.module.css';
 import InputComponent from '../../components/input/input.component';
 import { useDesktopContext } from '../../screen/desktop/desktop.context';
 import { getUserInfo, saveUser } from '../../db/supa';
+import { useNavigate } from 'react-router-dom';
 
 const ProfilePage = () => {
     const context = useDesktopContext();
-    const { email, fullname } = getUserInfo();
+    const navigate = useNavigate();
+    const { email, fullname, id } = getUserInfo();
+    if (!id) return navigate('/login');
     const [userInfo, setUserInfo] = useState({
         email: email || '',
         fullname: fullname || '',
@@ -32,7 +35,9 @@ const ProfilePage = () => {
         if (updateUser?.error) {
             context.updateProps({ noti: { text: updateUser.error, color: 'pink' } });
         } else {
-            context.updateProps({ noti: { text: 'Account updated successfully', color: 'lightblue' } });
+            context.updateProps({
+                noti: { text: 'Account updated successfully', color: 'lightblue' },
+            });
         }
 
         setTimeout(() => {

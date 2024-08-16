@@ -4,18 +4,20 @@ import { FaClockRotateLeft, FaFire, FaHeart } from 'react-icons/fa6';
 import { useDesktopContext } from '../../screen/desktop/desktop.context';
 import { useEffect, useState } from 'react';
 import { get_reci_user, getUserInfo, supa } from '../../db/supa';
+import { useNavigate } from 'react-router-dom';
 
 const CardComponent = ({ onLike, onClick, title, energy, time, image = empty_recipe, idx }) => {
     const context = useDesktopContext();
+    const navigate = useNavigate();
     const [liked, setLiked] = useState('var(--nn-white)');
     const [hasLoaded, setHasLoaded] = useState(false);
-    console.log(idx)
 
     const handleLiked = async () => {
+        const userId = getUserInfo()?.id;
+        if (!userId) return navigate('/login');
         if (hasLoaded) {
             if (liked === 'var(--nn-grey)') {
                 setLiked('var(--danger)');
-                const userId = getUserInfo()?.id;
                 const likedRecipes = await get_reci_user();
                 const { error } = await supa
                     .from('reci_user')
@@ -27,7 +29,6 @@ const CardComponent = ({ onLike, onClick, title, energy, time, image = empty_rec
                 }
             } else {
                 setLiked('var(--nn-grey)');
-                const userId = getUserInfo()?.id;
                 const likedRecipes = await get_reci_user();
                 const newlikedRecipes = likedRecipes.recipe.filter((r) => r !== idx.toString());
                 const { error } = await supa

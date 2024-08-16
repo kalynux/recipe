@@ -21,7 +21,7 @@ const Mobile = lazy(() => import('./screen/mobile/mobile'));
 const Desktop = lazy(() => import('./screen/desktop/desktop'));
 
 const AppRouter = () => {
-    var isLogin = getUserInfo()?.id;
+    var isLogin = getUserInfo()?.id || undefined;
     const renderComponent = (deviceType) => {
         switch (deviceType) {
             case 'mobile':

@@ -27,6 +27,7 @@ export const saveUser = async ({ fullname, email, password }) => {
 
 export const set_reci_user = async ({ fullname, recipe }) => {
     const user_id = getUserInfo()?.id;
+    if (!user_id) return;
     const { data, error } = await supa
         .from('reci_user')
         .upsert(
@@ -51,6 +52,7 @@ export const set_reci_user = async ({ fullname, recipe }) => {
 
 export const get_reci_user = async () => {
     const userId = getUserInfo()?.id;
+    if (!userId) return;
     console.log(userId);
     const { data, error } = await supa.from('reci_user').select().eq('user_id', userId);
     if (error) {
@@ -75,9 +77,3 @@ export const savedUserLocally = ({ data, fullname }) => {
     localStorage.setItem('user', JSON.stringify({ ...data.user, fullname }));
 };
 
-// export const addRecipe = async (formData) => ({
-//     const recipe = await supa
-//     .from('recipe_ugu')
-//     .insert(formData)
-//     .select();
-// })

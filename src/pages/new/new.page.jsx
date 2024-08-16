@@ -4,9 +4,11 @@ import { FaPencil, FaTrashCan } from 'react-icons/fa6';
 import InputComponent from '../../components/input/input.component';
 import { getUserInfo, supa } from '../../db/supa';
 import { useDesktopContext } from '../../screen/desktop/desktop.context';
+import { useNavigate } from 'react-router-dom';
 
 const AddNewPage = () => {
     const context = useDesktopContext();
+    const navigate = useNavigate()
     const userId = getUserInfo()?.id;
     const [recipeInfo, setRecipeInfo] = useState({
         name: '',
@@ -93,6 +95,7 @@ const AddNewPage = () => {
 
     const handleFormSubmit = async (ev) => {
         ev.preventDefault();
+        if (!userId) return navigate('/login');
         setLoader('loading...');
         const isFormValid = validation();
         if (!isFormValid) return setLoader(null);
@@ -167,7 +170,8 @@ const AddNewPage = () => {
         if (!cookTime && !isNaN(cookTime)) return returnThis('Please enter a cooking time period');
         if (ingredients.length <= 0) return returnThis('Please add ingredients to the recipe');
         if (instructions.length <= 0) return returnThis('Please add instructions to the recipe');
-        if (recipeImages.length <= 0) return returnThis('Please add atleast an images of the recipe');
+        if (recipeImages.length <= 0)
+            return returnThis('Please add atleast an images of the recipe');
 
         function returnThis(text) {
             context.updateProps({ noti: { text } });

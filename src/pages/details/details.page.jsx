@@ -107,10 +107,11 @@ const InfoBox = ({ cookTime, calories, origin, level, likes, idx }) => {
     const [hasLoaded, setHasLoaded] = useState(false);
 
     const handleLiked = async ({}) => {
+        const userId = getUserInfo()?.id;
+        if (!userId) return navigate('/login');
         if (hasLoaded) {
             if (liked === 'var(--nn-grey)') {
                 setLiked('var(--danger)');
-                const userId = getUserInfo()?.id;
                 const likedRecipes = await get_reci_user();
                 const { error } = await supa
                     .from('reci_user')
@@ -122,7 +123,6 @@ const InfoBox = ({ cookTime, calories, origin, level, likes, idx }) => {
                 }
             } else {
                 setLiked('var(--nn-grey)');
-                const userId = getUserInfo()?.id;
                 const likedRecipes = await get_reci_user();
                 const newlikedRecipes = likedRecipes.recipe.filter((r) => r !== idx.toString());
                 const { error } = await supa
