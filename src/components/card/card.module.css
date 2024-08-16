@@ -1,0 +1,80 @@
+:root {
+    /* fonts */
+    --font-roboto: 'Roboto', sans-serif;
+    --font-salsa: 'Salsa', sans-serif;
+    --font-poppins: 'Poppins', sans-serif;
+    --font-lato: 'Lato', sans-serif;
+
+    /* colors  */
+    --nn-primary: #1f3e72;
+    --nn-secondary: rgba(255, 255, 255, 0.78);
+    --nn-black: #131110;
+    --nn-grey: #b1b1b1;
+    --nn-trans-black: #13111091;
+    --nn-trans-white: #d4d4d4a4;
+    --nn-transparent: #9796b179;
+    --nn-light-blue: #b2c1ff;
+    --nn-blue-light-gradien: linear-gradient(97.05deg, #4066ff 3.76%, #4066ff5c 100%);
+    --nn-orange-gradien: linear-gradient(270deg, #ffb978 0%, #ff922d 100%);
+    --nn-primary-gradien: linear-gradient(270deg, #4066ff 0%, #1f3e72 100%);
+    --nn-primary-gradien: linear-gradient(270deg, #4066ff 0%, #1f3e72 100%);
+    --nn-blue: #4066ff;
+    --nn-lightBlue: #eeeeff;
+
+    --nn-transition: all .3s ease;
+    --nn-shadow: 0 23px 21px -8px rgba(255, 255, 255, 0.527);
+    --nn-lighter-shadow: 0px 1px 2px rgba(145, 145, 145, 0.664);
+    --nn-light-shadow: 1px 2px 3px rgba(177, 177, 177, 0.534);
+    --nn-borrDiv: 10px;
+    --nn-borrBtn: 5px;
+    --nn-padding-btn: 5px 12px;
+}
+
+.container {
+    padding: 10px;
+    border-radius: 10px;
+    background: var(--nn-trans-white);
+    box-shadow: var(--nn-lighter-shadow);
+    transition: var(--nn-transition);
+    cursor: default;
+    position: relative;
+    max-width: 320px;
+}
+
+.container:hover {
+    box-shadow: var(--nn-light-shadow);
+}
+
+.like_icon {
+    position: absolute;
+    cursor: pointer;
+    top: 15px;
+    right: 15px;
+
+}
+
+.card_img {
+    border-radius: 8px;
+    width: 100%;
+    height: 170px;
+}
+
+.title {
+    margin: 5px 2px;
+}
+
+.bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: small;
+    margin: 8px 0 0;
+    /* background-color: red; */
+}
+
+.bullet {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}

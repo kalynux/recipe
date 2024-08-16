@@ -1,0 +1,65 @@
+:root {
+    /* fonts */
+    --font-roboto: 'Roboto', sans-serif;
+    --font-salsa: 'Salsa', sans-serif;
+    --font-poppins: 'Poppins', sans-serif;
+    --font-lato: 'Lato', sans-serif;
+
+    /* colors  */
+    --nn-primary: #1f3e72;
+    --nn-secondary: rgb(241, 241, 241);
+    --nn-black: #131110;
+    --nn-grey: #b1b1b1;
+    --nn-trans-black: #13111091;
+    --nn-trans-white: #d4d4d4a4;
+    --nn-transparent: #9796b179;
+    --nn-light-blue: #b2c1ff;
+    --nn-blue-light-gradien: linear-gradient(97.05deg, #4066ff 3.76%, #4066ff5c 100%);
+    --nn-orange-gradien: linear-gradient(270deg, #ffb978 0%, #ff922d 100%);
+    --nn-primary-gradien: linear-gradient(270deg, #4066ff 0%, #1f3e72 100%);
+    --nn-primary-gradien: linear-gradient(270deg, #4066ff 0%, #1f3e72 100%);
+    --nn-blue: #4066ff;
+    --nn-lightBlue: #eeeeff;
+
+    --nn-transition: all .3s ease;
+    --nn-shadow: 0 23px 21px -8px rgba(255, 255, 255, 0.527);
+    --nn-dark-shadow: 0 14px 21px -8px rgba(87, 87, 87, 0.74);
+    --nn-light-shadow: 1px 4px 5px rgba(116, 116, 116, 0.74);
+    --nn-borrDiv: 10px;
+    --nn-borrBtn: 5px;
+    --nn-padding-btn: 5px 12px;
+}
+
+.form {
+    width: 100%;
+}
+
+.input_container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+
+.btn {
+    width: 100%;
+    margin: 2rem 0 0;
+    outline: none;
+    border: 2px solid var(--nn-trans-black);
+    border-radius: 50px;
+    background: var(--nn-blue);
+    height: 3rem;
+    font-size: medium;
+    transition: var(--nn-transition);
+    cursor: pointer;
+}
+
+.btn:hover {
+    scale: .97;
+}
+
+.noti{
+    background-color: pink;
+    padding: 3px 10px;
+    border-radius: 5px;
+    text-align: center;
+}
