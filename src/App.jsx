@@ -21,7 +21,6 @@ const Mobile = lazy(() => import('./screen/mobile/mobile'));
 const Desktop = lazy(() => import('./screen/desktop/desktop'));
 
 const AppRouter = () => {
-    var isLogin = getUserInfo()?.id || undefined;
     const renderComponent = (deviceType) => {
         switch (deviceType) {
             case 'mobile':
@@ -47,9 +46,9 @@ const AppRouter = () => {
                             <Route path="/details/:id" element={<DetailsPage />} />
                             <Route path="/login" element={<ConnectPage />} />
 
-                            {isLogin && <Route path="/favorite" element={<FavoritePage />} />}
-                            {isLogin && <Route path="/profile" element={<ProfilePage />} />}
-                            {isLogin && <Route path="/new" element={<AddNewPage />} />}
+                            <Route path="/favorite" element={<FavoritePage />} />
+                            <Route path="/profile" element={<ProfilePage />} />
+                            <Route path="/new" element={<AddNewPage />} />
                         </Route>
                         <Route path="*" element={<NotFound />} />
                     </Routes>
